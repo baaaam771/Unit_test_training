@@ -1,28 +1,24 @@
 import unittest
 
-def add(a, b):
+def concat_strings(a, b):
     return a+b
 
-def sub(a,b):
-    return a-b
+# "A" + "B" = "AB"
+# "" + "B" = "B"
+# "A" + "" = "A"
+# "" + "" = ""
 
-class TestAdd(unittest.TestCase):
-    def test_add(self):
-        self.assertEqual(add(1, 2), 3)
-        self.assertNotEqual(add(2, 4), 7)
+class TestConcat(unittest.TestCase):
+    def testNomalCase(self):
+        self.assertEqual(concat_strings("A", "B"), "AB")
+        self.assertEqual(concat_strings("", "B"), "B")
+        self.assertEqual(concat_strings("A", ""), "A")
+        self.assertEqual(concat_strings("", ""), "")
 
-class TestSub(unittest.TestCase):
-    def test_sub(self):
-        self.assertEqual(sub(7, 3), 4)
+    def testSpecialCase(self):
+        self.assertEqual(concat_strings("123", "ABC"), "123ABC")
+        self.assertEqual(concat_strings("123", "!@#"), "123!@#")
 
 if __name__ == '__main__':
-
-    suite = unittest.TestSuite()
-
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestAdd))
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestSub))
-
-    unittest.TextTestRunner().run(suite)
-   
-    # unittest.main(exit=False)
+    unittest.main(exit=False)
     

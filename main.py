@@ -16,7 +16,13 @@ class TestSub(unittest.TestCase):
         self.assertEqual(sub(7, 3), 4)
 
 if __name__ == '__main__':
-    
+
+    suite = unittest.TestSuite()
+
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestAdd))
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestSub))
+
+    unittest.TextTestRunner().run(suite)
    
-    unittest.main(exit=False)
+    # unittest.main(exit=False)
     

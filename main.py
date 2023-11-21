@@ -1,33 +1,19 @@
 import unittest
 
+def add(a, b):
+    return a+b
 
+def sub(a,b):
+    return a-b
 
-class TestStringUpper(unittest.TestCase):
-    def testUpeer(self):
-        self.assertEqual('abc'.upper(), 'ABC')
-        self.assertEqual('Ab'.upper(), 'AB')
-        self.assertEqual('d'.upper(), 'D')
+class TestAdd(unittest.TestCase):
+    def test_add(self):
+        self.assertEqual(add(1, 2), 3)
+        self.assertNotEqual(add(2, 4), 7)
 
-    # 대문자에만 동작
-    # 숫자, 특수문자 경우 false
-    # 들어가 있는 문자가 다 대문자인경우 True (ABC123)
-
-    def testUpperCase(self):
-        self.assertTrue('ABC'.isupper())
-        self.assertFalse('ABc'.isupper())
-
-    def testNumberCase(self):
-        self.assertFalse('123'.isupper())
-        self.assertTrue('ABC123'.isupper())
-
-    def testMarkCase(self):
-        self.assertFalse('?'.isupper())
-
-    def testSpecialCase(self):
-        self.assertTrue('ABC123'.isupper())
-        self.assertFalse(''.isupper())
-
-
+class TestSub(unittest.TestCase):
+    def test_sub(self):
+        self.assertEqual(sub(7, 3), 4)
 
 if __name__ == '__main__':
     
